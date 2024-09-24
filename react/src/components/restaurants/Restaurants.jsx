@@ -13,6 +13,7 @@ export const Restaurants = ({ restaurants, page }) => {
 
   return (
     <div key={currentRestaurant.id}>
+      <h1>{currentRestaurant.name}</h1>
       {currentRestaurant.menu.length > 0 && <MenuItem itemName={currentRestaurant.name} menuItems={currentRestaurant.menu} />}
       {currentRestaurant.reviews.length > 0 && <ReviewList reviews={currentRestaurant.reviews} />}
     </div>
