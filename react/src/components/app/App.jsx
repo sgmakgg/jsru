@@ -8,7 +8,6 @@ export const App = ({ topic, restaurants }) => {
 
   const onPageChange = (page) => {
     setCurrentPage(page);
-    restaurants.map((item) => item.index === currentPage);
   };
 
   return (
