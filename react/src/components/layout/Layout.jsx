@@ -1,7 +1,7 @@
 export const Layout = ({ children }) => (
   <>
     <header>
-      <h1>Restaurants App</h1>
+      <p>Restaurants App</p>
     </header>
     <main>
       {children}

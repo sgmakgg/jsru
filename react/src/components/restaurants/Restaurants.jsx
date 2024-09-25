@@ -1,15 +1,10 @@
 import { MenuItem } from "../menu/MenuItem.jsx";
 import { ReviewList } from "../reviews/ReviewList.jsx";
-import { useEffect, useState } from "react";
+import {restaurants} from "../../constants/materials/mock.js";
 
-export const Restaurants = ({ restaurants, page }) => {
-  const [index, setIndex] = useState(page - 1);
+export const Restaurants = ({ restaurantId }) => {
 
-  useEffect(() => {
-    setIndex(page - 1);
-  }, [page]);
-
-  const currentRestaurant = restaurants[index];
+  const currentRestaurant = restaurants.find(({ id }) => id === restaurantId);
 
   return (
     <div key={currentRestaurant.id}>

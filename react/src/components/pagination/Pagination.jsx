@@ -1,11 +1,8 @@
-import { useState } from 'react';
+export const Pagination = ({ totalItems, itemsPerPage, onPageChange, currentPage }) => {
 
-export const Pagination = ({ totalItems, itemsPerPage, onPageChange }) => {
-  const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
     onPageChange(page);
   };
 
