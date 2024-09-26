@@ -4,31 +4,27 @@ import {Tab} from "../tab/Tab.jsx";
 import { useState } from "react";
 import {restaurants} from "../../constants/materials/mock.js";
 
-const TAB = 'tab';
-const RESTAURANT_ID = 'restaurantId';
-const defaultSelection = new Map().set(TAB, 1).set(RESTAURANT_ID, restaurants[0].id);
-
 export const App = ({ topic }) => {
-  const [currentSelection, setCurrentSelection] = useState(defaultSelection);
+  const [currentRestaurantId, setCurrentRestaurantId] = useState(restaurants[0].id);
 
-  const onTabChange = (tab) => {
-    const selection =
-        new Map()
-        .set(TAB, tab)
-        .set(RESTAURANT_ID, restaurants[tab - 1].id);
-    setCurrentSelection(selection);
+  const onTabChange = (id) => {
+    setCurrentRestaurantId(id);
   };
 
   return (
     <Layout>
       <div>
         <h1>{topic}</h1>
-        <Tab totalTabs={restaurants.length}
-             onTabClick={onTabChange}
-             currentTab={currentSelection.get(TAB)}/>
+        {restaurants.map(({ id, name }) => (
+            <Tab
+                key = {id}
+                name={name}
+                onTabClick={() => onTabChange(id)}
+                currentTab={id === currentRestaurantId} />
+        ))}
         <Restaurant
             restaurant={restaurants.find((restaurant) =>
-                restaurant.id === currentSelection.get(RESTAURANT_ID))} />
+                restaurant.id === currentRestaurantId)} />
       </div>
     </Layout>
   );
