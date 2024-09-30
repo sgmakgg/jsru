@@ -1,4 +1,6 @@
-import { OrderButton } from "../orderButton/OrderButton.jsx";
+import { Counter } from "../counter/Counter.jsx";
+
+const TOPIC_ORDER = "Order";
 
 export const MenuItem = ({ itemName, menuItems }) => {
   return (
@@ -10,7 +12,7 @@ export const MenuItem = ({ itemName, menuItems }) => {
             <h3>{name}</h3>
             <p>{ingredients.join(', ')}</p>
             <p>£{price}</p>
-            <OrderButton />
+            <Counter topic={TOPIC_ORDER}/>
           </li>
         ))}
       </ul>
