@@ -1,4 +1,4 @@
-import {Counter} from "../counter/Counter.jsx";
+import {Counter} from "../counters/Counter.jsx";
 import useReviewForm from "./useReviewForm.js";
 
 const ReviewForm = () => {

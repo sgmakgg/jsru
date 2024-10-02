@@ -12,6 +12,8 @@ export const App = ({ topic }) => {
     setCurrentRestaurantId(id);
   };
 
+  const currentRestaurant = restaurants.find((restaurant) => restaurant.id === currentRestaurantId);
+
   return (
     <Layout>
       <ScrollProgressBar />
@@ -25,11 +27,7 @@ export const App = ({ topic }) => {
                 currentTab={id === currentRestaurantId} />
         ))}
         <Restaurant
-            restaurant={restaurants.find((restaurant) =>
-                restaurant.id === currentRestaurantId)} />
-        <Restaurant
-            restaurant={restaurants.find((restaurant) =>
-                restaurant.id === currentRestaurantId)} />
+            restaurant={currentRestaurant} />
       </div>
     </Layout>
   );
