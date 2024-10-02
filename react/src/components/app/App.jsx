@@ -1,8 +1,9 @@
 import { Layout } from "../layout/Layout.jsx";
 import { Restaurant } from "../restaurant/Restaurant.jsx";
-import {Tab} from "../tab/Tab.jsx";
+import { Tab } from "../tab/Tab.jsx";
 import { useState } from "react";
-import {restaurants} from "../../constants/materials/mock.js";
+import { restaurants } from "../../constants/materials/mock.js";
+import ScrollProgressBar from "../progressbar/ProgressBar.jsx";
 
 export const App = ({ topic }) => {
   const [currentRestaurantId, setCurrentRestaurantId] = useState(restaurants[0].id);
@@ -11,8 +12,11 @@ export const App = ({ topic }) => {
     setCurrentRestaurantId(id);
   };
 
+  const currentRestaurant = restaurants.find((restaurant) => restaurant.id === currentRestaurantId);
+
   return (
     <Layout>
+      <ScrollProgressBar />
       <div>
         <h1>{topic}</h1>
         {restaurants.map(({ id, name }) => (
@@ -23,8 +27,7 @@ export const App = ({ topic }) => {
                 currentTab={id === currentRestaurantId} />
         ))}
         <Restaurant
-            restaurant={restaurants.find((restaurant) =>
-                restaurant.id === currentRestaurantId)} />
+            restaurant={currentRestaurant} />
       </div>
     </Layout>
   );
