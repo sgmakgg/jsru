@@ -16,7 +16,7 @@ export const App = ({ topic }) => {
 
   return (
     <Layout>
-      <ScrollProgressBar />
+      <ScrollProgressBar viewVariant='accent'/>
       <div>
         <h1>{topic}</h1>
         {restaurants.map(({ id, name }) => (

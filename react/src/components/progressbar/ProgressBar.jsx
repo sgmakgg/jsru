@@ -1,18 +1,18 @@
 import useScrollProgress from "./useScrollProgress.js";
+import classNames from "classnames";
+import styles from "./progressBar.module.css";
 
-const ScrollProgressBar = () => {
+const ScrollProgressBar = ({viewVariant = 'default'}) => {
     const scrollProgress = useScrollProgress();
 
   return (
-    <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '5px', background: '#e0e0e0' }}>
-      <div
-        style={{
-          width: `${scrollProgress}%`,
-          height: '100%',
-          background: '#76c7c0',
-        }}
-      />
-    </div>
+    <div className={classNames(styles.progressBar, {
+        [styles.default]: viewVariant === 'default',
+        [styles.accent]: viewVariant === 'accent',
+    })}
+         style={{
+             width: scrollProgress,
+         }} />
   );
 };
 
