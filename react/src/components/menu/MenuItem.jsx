@@ -1,8 +1,10 @@
 import { DishCounter } from "../counters/DishCounter.jsx";
+import {useAuthn} from "../authn/useAuthn.js";
 
 const TOPIC_ORDER = "Order";
 
 export const MenuItem = ({ itemName, menuItems }) => {
+    const {authnState} = useAuthn();
   return (
     <div>
       <h2>{itemName.name}</h2>
@@ -12,7 +14,7 @@ export const MenuItem = ({ itemName, menuItems }) => {
             <h3>{name}</h3>
             <p>{ingredients.join(', ')}</p>
             <p>£{price}</p>
-            <DishCounter topic={TOPIC_ORDER}/>
+              { authnState === 'authorized' ? <DishCounter topic={TOPIC_ORDER}/> : null }
           </li>
         ))}
       </ul>
