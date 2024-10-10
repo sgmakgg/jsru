@@ -1,19 +1,19 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {normalizedDishes} from "../../constants/materials/normalized-mock.js";
+import { createSlice } from "@reduxjs/toolkit";
+import { normalizedDishes } from "../../constants/materials/normalized-mock.js";
 
 const initialState = {
-    entities: normalizedDishes.reduce((acc, dish) => {
-        acc[dish.id] = dish;
-        return acc;
-    }, {}),
-}
+  entities: normalizedDishes.reduce((acc, dish) => {
+    acc[dish.id] = dish;
+    return acc;
+  }, {}),
+};
 
 export const menuSlice = createSlice({
-    name: 'menu',
-    initialState,
-    selectors: {
-        selectDishById: (state, id) => state.entities[id],
-    },
+  name: "menu",
+  initialState,
+  selectors: {
+    selectDishById: (state, id) => state.entities[id],
+  },
 });
 
-export const {selectDishById} = menuSlice.selectors;
+export const { selectDishById } = menuSlice.selectors;

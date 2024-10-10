@@ -1,14 +1,14 @@
 .default {
-    padding: 5px 10px;
-    font-size: 10px;
+  padding: 5px 10px;
+  font-size: 10px;
 }
 
 .purple {
-    background-color: rebeccapurple;
-    color: purple;
+  background-color: rebeccapurple;
+  color: purple;
 }
 
 .mediumPurple {
-    background-color: mediumpurple;
-    color: rebeccapurple;
+  background-color: mediumpurple;
+  color: rebeccapurple;
 }

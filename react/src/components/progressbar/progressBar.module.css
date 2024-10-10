@@ -1,14 +1,14 @@
 .progressBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
 }
 
 .default {
-    background-color: blueviolet;
+  background-color: blueviolet;
 }
 
 .accent {
-    background: red;
+  background: red;
 }

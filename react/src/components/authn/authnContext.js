@@ -1,3 +1,3 @@
-import {createContext} from "react";
+import { createContext } from "react";
 
-export const AuthnContext = createContext('unauthorized');
+export const AuthnContext = createContext("unauthorized");
