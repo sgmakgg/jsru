@@ -1,12 +1,16 @@
-export const Counter = ({ topic = null, outerValue = 0, addOuterValueCallBack = () => {} }) => {
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../../redux/ui/cart/cart.js";
+
+export const Counter = ({ topic = null, outerValue = 0, dishId }) => {
+  const dispatch = useDispatch();
 
   const orderCountUp = () => {
-    if (outerValue < 5) addOuterValueCallBack(outerValue + 1);
+    if (outerValue < 5) dispatch(addItem({ id: dishId }));
   };
 
   const orderCountDown = (event) => {
     event.preventDefault();
-    if (outerValue > 0) addOuterValueCallBack(outerValue - 1);
+    if (outerValue > 0) dispatch(removeItem({ id: dishId }));
   };
 
   return (
