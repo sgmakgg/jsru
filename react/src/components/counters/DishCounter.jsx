@@ -1,14 +1,9 @@
-import { useState } from "react";
 import { Counter } from "./Counter.jsx";
+import { useSelector } from "react-redux";
+import { selectAmount } from "../../redux/ui/cart/cart.js";
 
-export const DishCounter = ({ topic }) => {
-  const [order, setOrder] = useState(0);
+export const DishCounter = ({ dishId }) => {
+  const amount = useSelector((state) => selectAmount(state, dishId));
 
-  return (
-    <Counter
-      topic={topic}
-      outerValue={order}
-      addOuterValueCallBack={setOrder}
-    />
-  );
+  return <Counter outerValue={amount} dishId={dishId} />;
 };
