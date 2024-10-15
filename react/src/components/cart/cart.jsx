@@ -6,7 +6,7 @@ export const Cart = () => {
   const cartItems = useSelector(selectItems);
   return (
     <div>
-      <h2>{"Cart"}</h2>
+      <h2>Cart</h2>
       {cartItems.map((item) => (
         <CartItem key={item.id} itemId={item.id} />
       ))}

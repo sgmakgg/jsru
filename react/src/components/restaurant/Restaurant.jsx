@@ -1,12 +1,12 @@
 import { MenuItem } from "../menu/MenuItem.jsx";
 import { Reviews } from "../reviews/Reviews.jsx";
 import ReviewForm from "../reviewForm/ReviewForm.jsx";
-import { useAuthn } from "../authn/useAuthn.js";
+import { useAuth } from "../auth/useAuth.js";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/restaurants/restaurantsSlice.js";
 
 export const Restaurant = ({ restaurantId }) => {
-  const { authnState } = useAuthn();
+  const { authState } = useAuth();
   const restaurant = useSelector((state) =>
     selectRestaurantById(state, restaurantId),
   );
@@ -20,7 +20,7 @@ export const Restaurant = ({ restaurantId }) => {
       {restaurant.reviews.length > 0 && (
         <Reviews reviews={restaurant.reviews} />
       )}
-      {authnState === "authorized" ? <ReviewForm /> : null}
+      {authState === "authorized" ? <ReviewForm /> : null}
     </div>
   );
 };

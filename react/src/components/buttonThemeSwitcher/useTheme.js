@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SwitcherContext } from "./switcherContext.js";
+import { ThemeContext } from "./themeContext.js";
 
 export const useTheme = () => {
-  return useContext(SwitcherContext);
+  return useContext(ThemeContext);
 };

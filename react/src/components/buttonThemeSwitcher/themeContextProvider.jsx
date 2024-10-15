@@ -1,7 +1,7 @@
-import { SwitcherContext } from "./switcherContext.js";
+import { ThemeContext } from "./themeContext.js";
 import { useState } from "react";
 
-export const SwitcherContextProvider = ({ children }) => {
+export const ThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState("mediumPurple");
 
   const switchTheme = () => {
@@ -9,8 +9,8 @@ export const SwitcherContextProvider = ({ children }) => {
   };
 
   return (
-    <SwitcherContext.Provider value={{ value: theme, switchTheme }}>
+    <ThemeContext.Provider value={{ value: theme, switchTheme }}>
       {children}
-    </SwitcherContext.Provider>
+    </ThemeContext.Provider>
   );
 };
