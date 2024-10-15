@@ -1,6 +1,7 @@
 import ScrollProgressBar from "../progressbar/ProgressBar.jsx";
 import { Cart } from "../cart/cart.jsx";
 import { useAuth } from "../auth/useAuth.js";
+import AuthButton from "../auth/authButton.jsx";
 
 export const Layout = ({ children }) => {
   const { authState } = useAuth();
@@ -8,6 +9,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       <ScrollProgressBar viewVariant="accent" />
+      <AuthButton />
       <header>
         <p>Restaurants App</p>
       </header>

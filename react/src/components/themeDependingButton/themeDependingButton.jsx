@@ -10,7 +10,7 @@ export const ThemeDependingButton = ({ callback, topic, disabled = false }) => {
         [styles.purple]: value === "purple",
         [styles.mediumPurple]: value === "mediumPurple",
       })}
-      onClick={() => callback()}
+      onClick={callback}
       disabled={disabled}
     >
       {topic}
