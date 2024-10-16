@@ -1,11 +1,13 @@
 import { Review } from "../review/review.jsx";
+import { useRestaurant } from "../restaurant/useRestaraunt.js";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = () => {
+  const restaurant = useRestaurant();
   return (
     <>
       <h3>Reviews</h3>
       <ul>
-        {reviews.map((id) => (
+        {restaurant.reviews.map((id) => (
           <Review key={id} id={id} />
         ))}
       </ul>
