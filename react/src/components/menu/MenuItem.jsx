@@ -1,9 +1,12 @@
 import Dish from "../dish/Dish.jsx";
-import { useRestaurant } from "../restaurant/useRestaraunt.js";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectRestaurantById } from "../../redux/restaurants/restaurantsSlice.js";
 
-export const MenuItem = () => {
-  const restaurant = useRestaurant();
+export const MenuItem = ({ restaurantId }) => {
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantId),
+  );
 
   return (
     <div>

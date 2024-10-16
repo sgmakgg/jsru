@@ -1,10 +1,10 @@
 import { createBrowserRouter, Link } from "react-router-dom";
 import { Layout } from "../components/layout/Layout.jsx";
 import RestaurantsPage from "../components/restaurantspage/RestaurantsPage.jsx";
-import { Restaurant } from "../components/restaurant/Restaurant.jsx";
-import { MenuItem } from "../components/menu/MenuItem.jsx";
-import { Reviews } from "../components/reviews/Reviews.jsx";
-import { Ingredients } from "../components/dishIngredients/DishIngredients.jsx";
+import { IngredientsPage } from "../components/dishIngredients/DishIngredientsPage.jsx";
+import { MenuItemPage } from "../components/menu/MenuItemPage.jsx";
+import { ReviewsPage } from "../components/reviews/ReviewsPage.jsx";
+import { SingleRestaurantPage } from "../components/restaurant/RestaurantPage.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -20,16 +20,16 @@ export const router = createBrowserRouter([
         element: <RestaurantsPage />,
         children: [
           {
-            path: "/restaurants/:restaurantId",
-            element: <Restaurant />,
+            path: ":restaurantId",
+            element: <SingleRestaurantPage />,
             children: [
               {
-                path: "/restaurants/:restaurantId/menu",
-                element: <MenuItem />,
+                path: ":restaurantId/menu",
+                element: <MenuItemPage />,
               },
               {
-                path: "/restaurants/:restaurantId/reviews",
-                element: <Reviews />,
+                path: ":restaurantId/reviews",
+                element: <ReviewsPage />,
               },
             ],
           },
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/dish/:dishId",
-        element: <Ingredients />,
+        element: <IngredientsPage />,
       },
     ],
   },
