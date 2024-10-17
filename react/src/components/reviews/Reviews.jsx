@@ -1,11 +1,16 @@
 import { Review } from "../review/review.jsx";
+import { useSelector } from "react-redux";
+import { selectRestaurantById } from "../../redux/restaurants/restaurantsSlice.js";
 
-export const Reviews = ({ reviews }) => {
+export const Reviews = ({ restaurantId }) => {
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantId),
+  );
   return (
     <>
       <h3>Reviews</h3>
       <ul>
-        {reviews.map((id) => (
+        {restaurant.reviews.map((id) => (
           <Review key={id} id={id} />
         ))}
       </ul>

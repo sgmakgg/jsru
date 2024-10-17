@@ -1,9 +1,9 @@
-import { MenuItem } from "../menu/MenuItem.jsx";
-import { Reviews } from "../reviews/Reviews.jsx";
 import ReviewForm from "../reviewForm/ReviewForm.jsx";
 import { useAuth } from "../auth/useAuth.js";
 import { useSelector } from "react-redux";
 import { selectRestaurantById } from "../../redux/restaurants/restaurantsSlice.js";
+import { NavLink, Outlet } from "react-router-dom";
+import { Tab } from "../tab/Tab.jsx";
 
 export const Restaurant = ({ restaurantId }) => {
   const { authState } = useAuth();
@@ -14,12 +14,13 @@ export const Restaurant = ({ restaurantId }) => {
   return (
     <div key={restaurant.id}>
       <h2>{restaurant.name}</h2>
-      {restaurant.menu.length > 0 && (
-        <MenuItem itemName={restaurant.name} menuItems={restaurant.menu} />
-      )}
-      {restaurant.reviews.length > 0 && (
-        <Reviews reviews={restaurant.reviews} />
-      )}
+      <NavLink to={`${restaurant.id}/menu`}>
+        <Tab id={restaurant.id} tabTopic="Menu" />
+      </NavLink>
+      <NavLink to={`${restaurant.id}/reviews`}>
+        <Tab id={restaurant.id} tabTopic="Reviews" />
+      </NavLink>
+      <Outlet />
       {authState === "authorized" ? <ReviewForm /> : null}
     </div>
   );
