@@ -1,11 +1,13 @@
+import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
 import { Review } from "../review/review.jsx";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurants/restaurantsSlice.js";
+import { store } from "../../redux/store.js";
 
 export const Reviews = ({ restaurantId }) => {
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId),
+  const restaurant = restaurantsSelectors.selectById(
+    store.getState(),
+    restaurantId,
   );
+
   return (
     <>
       <h3>Reviews</h3>

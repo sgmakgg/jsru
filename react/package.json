@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "npm --prefix src/materials/simple_api/ run dev"
+    "server": "npm --prefix src/materials/simple_api/ run dev",
+    "combo": "npm run dev & npm run server"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.8",

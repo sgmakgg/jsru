@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
-import { selectRestaurantNameById } from "../../redux/restaurants/restaurantsSlice.js";
 import { ThemeDependingButton } from "../themeDependingButton/themeDependingButton.jsx";
 import { useParams } from "react-router-dom";
+import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
+import { store } from "../../redux/store.js";
 
 export const Tab = ({ id, tabTopic = null }) => {
-  const name = useSelector((state) => selectRestaurantNameById(state, id));
+  const name = restaurantsSelectors.selectById(store.getState(), id).name;
   const { restaurantId } = useParams();
 
   return (

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectDishById } from "../../redux/menu/menuSlice.js";
+import { selectDishById } from "../../redux/entities/menu/menuSlice.js";
 import { DishCounter } from "../counters/DishCounter.jsx";
 import { useAuth } from "../auth/useAuth.js";
 

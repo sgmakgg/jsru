@@ -1,7 +1,8 @@
 import { DishCounter } from "../counters/DishCounter.jsx";
-import { selectDishById } from "../../redux/menu/menuSlice.js";
+
 import { useSelector } from "react-redux";
 import styles from "./cartItem.module.css";
+import { selectDishById } from "../../redux/entities/menu/menuSlice.js";
 
 export const CartItem = ({ itemId }) => {
   const dish = useSelector((state) => selectDishById(state, itemId));
