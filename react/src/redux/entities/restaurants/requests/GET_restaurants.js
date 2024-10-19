@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { BACKEND_API_URL } from "../../../request.constants.js";
+import { BACKEND_API_URL } from "../../../../request.constants.js";
 
 export const GET_restaurants = createAsyncThunk(
   "restaurants/GET_restaurants",

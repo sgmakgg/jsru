@@ -3,13 +3,12 @@ import { useAuth } from "../auth/useAuth.js";
 import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
 import { NavLink, Outlet } from "react-router-dom";
 import { Tab } from "../tab/Tab.jsx";
-import { store } from "../../redux/store.js";
+import { useSelector } from "react-redux";
 
 export const Restaurant = ({ restaurantId }) => {
   const { authState } = useAuth();
-  const restaurant = restaurantsSelectors.selectById(
-    store.getState(),
-    restaurantId,
+  const restaurant = useSelector((state) =>
+    restaurantsSelectors.selectById(state, restaurantId),
   );
 
   return (

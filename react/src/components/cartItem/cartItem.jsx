@@ -1,11 +1,11 @@
 import { DishCounter } from "../counters/DishCounter.jsx";
-
-import { useSelector } from "react-redux";
 import styles from "./cartItem.module.css";
-import { selectDishById } from "../../redux/entities/menu/menuSlice.js";
+import { menuSelectors } from "../../redux/entities/menu/menuSlice.js";
+import { useSelector } from "react-redux";
 
 export const CartItem = ({ itemId }) => {
-  const dish = useSelector((state) => selectDishById(state, itemId));
+  const dish = useSelector((state) => menuSelectors.selectById(state, itemId));
+
   return (
     <div className={styles.container}>
       <span>{dish.name}</span>
