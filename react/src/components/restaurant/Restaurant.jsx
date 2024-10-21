@@ -1,14 +1,14 @@
 import ReviewForm from "../reviewForm/ReviewForm.jsx";
 import { useAuth } from "../auth/useAuth.js";
-import { useSelector } from "react-redux";
-import { selectRestaurantById } from "../../redux/restaurants/restaurantsSlice.js";
+import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
 import { NavLink, Outlet } from "react-router-dom";
 import { Tab } from "../tab/Tab.jsx";
+import { useSelector } from "react-redux";
 
 export const Restaurant = ({ restaurantId }) => {
   const { authState } = useAuth();
   const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId),
+    restaurantsSelectors.selectById(state, restaurantId),
   );
 
   return (
