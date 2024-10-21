@@ -1,20 +1,20 @@
 import {
-  menuSelectors,
+  dishesSelectors,
   selectRequestStatus,
-} from "../../redux/entities/menu/menuSlice.js";
+} from "../../redux/entities/menu/dishesSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { GET_dishById } from "../../redux/entities/menu/requests/GET_dishById.js";
+import { getDishById } from "../../redux/entities/menu/requests/getDishById.js";
 import { IDLE, PENDING, REJECTED } from "../../request.constants.js";
 
 const Dish = ({ id }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(GET_dishById(id));
+    dispatch(getDishById(id));
   }, [dispatch, id]);
 
-  const dish = useSelector((state) => menuSelectors.selectById(state, id));
+  const dish = useSelector((state) => dishesSelectors.selectById(state, id));
   const requestStatus = useSelector(selectRequestStatus);
 
   if (requestStatus === IDLE || requestStatus === PENDING) {

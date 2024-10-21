@@ -1,24 +1,24 @@
-import { menuSelectors } from "../../redux/entities/menu/menuSlice.js";
+import { dishesSelectors } from "../../redux/entities/menu/dishesSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { GET_menu } from "../../redux/entities/menu/requests/GET_menu.js";
+import { getDishes } from "../../redux/entities/menu/requests/getDishes.js";
 import { NavLink } from "react-router-dom";
 import Dish from "../dish/Dish.jsx";
 
-export const MenuItem = ({ restaurantId }) => {
+export const DishesList = ({ restaurantId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(GET_menu(restaurantId));
+    dispatch(getDishes(restaurantId));
   }, [dispatch, restaurantId]);
 
-  const menu = useSelector((state) => menuSelectors.selectAll(state));
+  const dishes = useSelector((state) => dishesSelectors.selectAll(state));
 
   return (
     <div>
       <h2>Menu</h2>
       <ul>
-        {menu.map((item) => {
+        {dishes.map((item) => {
           return (
             <NavLink to={`/dish/${item.id}`} key={item.id}>
               <Dish id={item.id} />

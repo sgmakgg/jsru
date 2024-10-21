@@ -2,18 +2,18 @@ import { Tab } from "../tab/Tab.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Outlet } from "react-router-dom";
 import { useEffect } from "react";
-import { GET_restaurants } from "../../redux/entities/restaurants/requests/GET_restaurants.js";
+import { getRestaurants } from "../../redux/entities/restaurants/requests/getRestaurants.js";
 import {
   restaurantsSelectors,
   selectRequestStatus,
 } from "../../redux/entities/restaurants/restaurantsSlice.js";
 import { IDLE, PENDING, REJECTED } from "../../request.constants.js";
 
-const RestaurantPage = ({ topic = "Restaurants" }) => {
+const RestaurantTabs = ({ topic = "Restaurants" }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(GET_restaurants());
+    dispatch(getRestaurants());
   }, [dispatch]);
 
   const restaurantIds = useSelector(restaurantsSelectors.selectIds);
@@ -39,4 +39,4 @@ const RestaurantPage = ({ topic = "Restaurants" }) => {
     </div>
   );
 };
-export default RestaurantPage;
+export default RestaurantTabs;
