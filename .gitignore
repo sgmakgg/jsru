@@ -96,9 +96,6 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
-# next.js build output
-.next
-
 # Lerna
 lerna-debug.log
 
@@ -117,3 +114,8 @@ bundle.js.map
 *.code-workspace
 **/uploads
 nginx_caches/
+
+# next.js
+.next
+next-env.d.ts
+dist
