@@ -1,3 +1,4 @@
+"use client";
 import { dishesSelectors } from "../../redux/entities/menu/dishesSlice.js";
 import { DishCounter } from "../counters/DishCounter.jsx";
 import { useAuth } from "../auth/useAuth.js";

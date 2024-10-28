@@ -1,3 +1,4 @@
+"use client";
 import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
 import { Review } from "../review/review.jsx";
 import { useSelector } from "react-redux";

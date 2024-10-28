@@ -1,9 +1,11 @@
+"use client";
+
 import { dishesSelectors } from "../../redux/entities/menu/dishesSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDishes } from "../../redux/entities/menu/requests/getDishes.js";
-import { NavLink } from "react-router-dom";
 import Dish from "../dish/Dish.jsx";
+import Link from "next/link";
 
 export const DishesList = ({ restaurantId }) => {
   const dispatch = useDispatch();
@@ -20,9 +22,9 @@ export const DishesList = ({ restaurantId }) => {
       <ul>
         {dishes.map((item) => {
           return (
-            <NavLink to={`/dish/${item.id}`} key={item.id}>
+            <Link href={`/dish/${item.id}`} key={item.id}>
               <Dish id={item.id} />
-            </NavLink>
+            </Link>
           );
         })}
       </ul>

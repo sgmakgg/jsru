@@ -1,6 +1,7 @@
+"use client";
+
 import { Tab } from "../tab/Tab.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { getRestaurants } from "../../redux/entities/restaurants/requests/getRestaurants.js";
 import {
@@ -8,8 +9,9 @@ import {
   selectRequestStatus,
 } from "../../redux/entities/restaurants/restaurantsSlice.js";
 import { IDLE, PENDING, REJECTED } from "../../request.constants.js";
+import Link from "next/link";
 
-const RestaurantTabs = ({ topic = "Restaurants" }) => {
+const RestaurantTabs = ({ children, topic = "Restaurants" }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,11 +33,11 @@ const RestaurantTabs = ({ topic = "Restaurants" }) => {
     <div>
       <h1>{topic}</h1>
       {restaurantIds.map((id) => (
-        <NavLink to={`/restaurants/${id}`} key={id}>
+        <Link href={`/restaurants/${id}`} key={id}>
           <Tab key={id} id={id} />
-        </NavLink>
+        </Link>
       ))}
-      <Outlet />
+      {children}
     </div>
   );
 };

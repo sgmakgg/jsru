@@ -1,3 +1,5 @@
+"use client";
+
 import { useCurrentTime } from "./useClock.js";
 import styles from "./clock.module.css";
 
