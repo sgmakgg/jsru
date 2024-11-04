@@ -1,20 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { DishesList } from "../../../../components/menu/DishesList.jsx";
+import { useRestaurantDishes } from "./useRestaurantDishes.js";
 
 export default function MenuPage({ params }) {
-  const [restaurantId, setRestaurantId] = useState(null);
+  const { dishesList } = useRestaurantDishes(params);
 
-  useEffect(() => {
-    params.then((resolvedParams) => {
-      setRestaurantId(resolvedParams.restaurantId);
-    });
-  }, [params]);
-
-  if (!restaurantId) {
-    return <div>Loading...</div>;
-  }
-
-  return <DishesList restaurantId={restaurantId}>Order dishes</DishesList>;
+  return <DishesList dishes={dishesList}>Order dishes</DishesList>;
 }

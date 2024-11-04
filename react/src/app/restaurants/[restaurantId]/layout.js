@@ -1,20 +1,21 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { Restaurant } from "../../../components/restaurant/Restaurant.jsx";
+import { getRestaurantByIdNext } from "../../services/get-restaurantById.js";
 
-export default function RestaurantLayout({ params, children }) {
-  const [restaurantId, setRestaurantId] = useState(null);
+export const generateStaticParams = () => {
+  return [
+    { restaurantId: "bb8afbec-2fec-491f-93e9-7f13950dd80b" },
+    { restaurantId: "d9241927-09e1-44f3-8986-a76346869037" },
+  ];
+};
 
-  useEffect(() => {
-    params.then((resolvedParams) => {
-      setRestaurantId(resolvedParams.restaurantId);
-    });
-  }, [params]);
+export async function generateMetadata() {
+  return {
+    title: "Restaurant Layout",
+  };
+}
 
-  if (!restaurantId) {
-    return <div>Loading...</div>;
-  }
+export default async function RestaurantLayout({ params, children }) {
+  const restaurant = await getRestaurantByIdNext((await params).restaurantId);
 
-  return <Restaurant restaurantId={restaurantId}>{children}</Restaurant>;
+  return <Restaurant restaurant={restaurant}>{children}</Restaurant>;
 }

@@ -1,36 +1,16 @@
-"use client";
-
-import {
-  dishesSelectors,
-  selectRequestStatus,
-} from "../../redux/entities/menu/dishesSlice.js";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getDishById } from "../../redux/entities/menu/requests/getDishById.js";
-import { IDLE, PENDING, REJECTED } from "../../request.constants.js";
+import { useFetchDish } from "./useFetchDish.js";
+import Loading from "../../app/restaurants/[restaurantId]/loading.js";
+import { Suspense } from "react";
 
 const Dish = ({ id }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDishById(id));
-  }, [dispatch, id]);
-
-  const dish = useSelector((state) => dishesSelectors.selectById(state, id));
-  const requestStatus = useSelector(selectRequestStatus);
-
-  if (requestStatus === IDLE || requestStatus === PENDING) {
-    return <div>Loading...</div>;
-  }
-
-  if (requestStatus === REJECTED) {
-    return <div>Failed to load data</div>;
-  }
+  const dish = useFetchDish(id);
 
   return (
-    <li>
-      <h3>{dish.name}</h3>
-    </li>
+    <Suspense fallback={<Loading />}>
+      <li>
+        <h3>{dish?.name}</h3>
+      </li>
+    </Suspense>
   );
 };
 
