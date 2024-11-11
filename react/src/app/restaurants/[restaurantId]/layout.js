@@ -8,9 +8,10 @@ export const generateStaticParams = () => {
   ];
 };
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }) {
+  const restaurant = await getRestaurantByIdNext((await params).restaurantId);
   return {
-    title: "Restaurant Layout",
+    title: restaurant.name,
   };
 }
 

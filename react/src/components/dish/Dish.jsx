@@ -1,10 +1,7 @@
-import { useFetchDish } from "./useFetchDish.js";
 import Loading from "../../app/restaurants/[restaurantId]/loading.js";
 import { Suspense } from "react";
 
-const Dish = ({ id }) => {
-  const dish = useFetchDish(id);
-
+const Dish = ({ dish }) => {
   return (
     <Suspense fallback={<Loading />}>
       <li>

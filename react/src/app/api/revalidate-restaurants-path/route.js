@@ -2,7 +2,7 @@ import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export function GET() {
-  revalidatePath("/api/restaurants");
+  revalidatePath("/restaurants");
 
   return NextResponse.json({ status: "success" });
 }
