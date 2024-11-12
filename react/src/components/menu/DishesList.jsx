@@ -7,16 +7,14 @@ export const DishesList = async ({ dishes }) => {
     <div>
       <h2>Menu</h2>
       <ul>
-        {await Promise.all(
-          dishes.map(async (item) => {
-            const dish = await getDishByIdServer(item.id);
-            return (
-              <Link href={`/dish/${item.id}`} key={item.id}>
-                <Dish dish={dish} />
-              </Link>
-            );
-          }),
-        )}
+        {dishes.map(async (item) => {
+          const dish = await getDishByIdServer(item.id);
+          return (
+            <Link href={`/dish/${item.id}`} key={item.id}>
+              <Dish dish={dish} />
+            </Link>
+          );
+        })}
       </ul>
     </div>
   );
