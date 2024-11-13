@@ -4,15 +4,14 @@ import { ThemeContextProvider } from "./components/buttonThemeSwitcher/themeCont
 import { AuthContextProvider } from "./components/auth/authContextProvider.jsx";
 import { Provider } from "react-redux";
 import { store } from "./redux/store.js";
-import { RouterProvider } from "react-router-dom";
-import { router } from "./configs/router.jsx";
+import { Layout } from "./components/layout/Layout.jsx";
 
-export const App = () => {
+export const App = ({ children }) => {
   return (
     <Provider store={store}>
       <AuthContextProvider>
         <ThemeContextProvider>
-          <RouterProvider router={router} />
+          <Layout>{children}</Layout>
         </ThemeContextProvider>
       </AuthContextProvider>
     </Provider>

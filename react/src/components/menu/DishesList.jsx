@@ -1,28 +1,18 @@
-import { dishesSelectors } from "../../redux/entities/menu/dishesSlice.js";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { getDishes } from "../../redux/entities/menu/requests/getDishes.js";
-import { NavLink } from "react-router-dom";
 import Dish from "../dish/Dish.jsx";
+import Link from "next/link";
+import { getDishByIdServer } from "../../app/services/get-dishByIdServer.js";
 
-export const DishesList = ({ restaurantId }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getDishes(restaurantId));
-  }, [dispatch, restaurantId]);
-
-  const dishes = useSelector((state) => dishesSelectors.selectAll(state));
-
+export const DishesList = async ({ dishes }) => {
   return (
     <div>
       <h2>Menu</h2>
       <ul>
-        {dishes.map((item) => {
+        {dishes.map(async (item) => {
+          const dish = await getDishByIdServer(item.id);
           return (
-            <NavLink to={`/dish/${item.id}`} key={item.id}>
-              <Dish id={item.id} />
-            </NavLink>
+            <Link href={`/dish/${item.id}`} key={item.id}>
+              <Dish dish={dish} />
+            </Link>
           );
         })}
       </ul>

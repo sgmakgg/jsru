@@ -1,26 +1,22 @@
+"use client";
 import ReviewForm from "../reviewForm/ReviewForm.jsx";
 import { useAuth } from "../auth/useAuth.js";
-import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
-import { NavLink, Outlet } from "react-router-dom";
 import { Tab } from "../tab/Tab.jsx";
-import { useSelector } from "react-redux";
+import Link from "next/link";
 
-export const Restaurant = ({ restaurantId }) => {
+export const Restaurant = ({ restaurant, children }) => {
   const { authState } = useAuth();
-  const restaurant = useSelector((state) =>
-    restaurantsSelectors.selectById(state, restaurantId),
-  );
 
   return (
     <div key={restaurant.id}>
       <h2>{restaurant.name}</h2>
-      <NavLink to={`${restaurant.id}/menu`}>
+      <Link href={`/restaurants/${restaurant.id}/menu`}>
         <Tab id={restaurant.id} tabTopic="Menu" />
-      </NavLink>
-      <NavLink to={`${restaurant.id}/reviews`}>
+      </Link>
+      <Link href={`/restaurants/${restaurant.id}/reviews`}>
         <Tab id={restaurant.id} tabTopic="Reviews" />
-      </NavLink>
-      <Outlet />
+      </Link>
+      {children}
       {authState === "authorized" ? <ReviewForm /> : null}
     </div>
   );

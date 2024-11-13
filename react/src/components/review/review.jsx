@@ -1,17 +1,14 @@
-import { selectReviewById } from "../../redux/entities/review/reviewSlice.js";
-import { useSelector } from "react-redux";
-import { selectUserById } from "../../redux/entities/user/user.js";
+import { getUsersNext } from "../../app/services/get-users.js";
 
-export const Review = ({ id }) => {
-  const review = useSelector((state) => selectReviewById(state, id));
-  const user = useSelector((state) => selectUserById(state, review.userId));
+export const Review = async ({ review }) => {
+  const users = await getUsersNext();
+  const user = users.find((user) => user.id === review.userId);
+
   return (
-    <>
-      <li key={review.id}>
-        <h4>{user.name}</h4>
-        <p>{review.text}</p>
-        <p>Rating: {review.rating}</p>
-      </li>
-    </>
+    <li key={review.id}>
+      <h4>{user?.name}</h4>
+      <p>{review.text}</p>
+      <p>Rating: {review.rating}</p>
+    </li>
   );
 };

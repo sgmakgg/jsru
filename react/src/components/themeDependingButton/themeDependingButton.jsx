@@ -1,3 +1,5 @@
+"use client";
+
 import classNames from "classnames";
 import styles from "./themeDependingButton.module.css";
 import { useTheme } from "../buttonThemeSwitcher/useTheme.js";

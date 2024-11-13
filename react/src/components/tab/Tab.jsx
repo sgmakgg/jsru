@@ -1,15 +1,11 @@
+"use client";
 import { ThemeDependingButton } from "../themeDependingButton/themeDependingButton.jsx";
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { restaurantsSelectors } from "../../redux/entities/restaurants/restaurantsSlice.js";
+import { useParams } from "next/navigation";
 
 export const Tab = ({ id, tabTopic = null }) => {
-  const name = useSelector(
-    (state) => restaurantsSelectors.selectById(state, id)?.name,
-  );
-  const { restaurantId } = useParams();
+  const params = useParams();
 
-  const disabledButton = restaurantId === id && tabTopic === null;
+  const disabledButton = params.id === id && tabTopic === null;
 
   return (
     <ThemeDependingButton
